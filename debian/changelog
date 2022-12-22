@@ -1,0 +1,135 @@
+pyquery (1.2.9-4) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Sandro Tosi ]
+  * Drop python2 support; Closes: #937514
+
+ -- Sandro Tosi <morph@debian.org>  Sat, 04 Jan 2020 17:00:25 -0500
+
+pyquery (1.2.9-3) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/control: Deprecating priority extra as per policy 4.0.1
+  * d/watch: Use https protocol
+  * d/control: Remove trailing whitespaces
+  * d/control: Remove ancient X-Python-Version field
+
+  [ Piotr Ożarowski ]
+  * Add dh-python to Build-Depends
+
+  [ TANIGUCHI Takaki ]
+  * Bump Stanrads-Version to 4.1.4
+
+ -- TANIGUCHI Takaki <takaki@debian.org>  Fri, 18 May 2018 19:40:22 +0900
+
+pyquery (1.2.9-2) unstable; urgency=medium
+
+  * debian/control: Add python-setuptools to Build-Depends. (Closes: #806476)
+
+ -- TANIGUCHI Takaki <takaki@debian.org>  Sun, 29 Nov 2015 16:35:45 +0900
+
+pyquery (1.2.9-1) unstable; urgency=medium
+
+  [ Jonathan Wiltshire ]
+  * Update debian/watch
+
+  [ TANIGUCHI Takaki ]
+  * New upstream release (Closes: #737548)
+    + Fix incompatible with python-cssselect 0.9.1 (Closes: #791590)
+  * Support python3 (Closes: #782930)
+  * debian/rules: Skip test.
+  * debian/control:
+    + Bump Standards-Version 3.9.6.
+    + Update debhelper version.
+    + Add python3 to Build-Depends
+
+ -- TANIGUCHI Takaki <takaki@debian.org>  Wed, 25 Nov 2015 19:06:55 +0900
+
+pyquery (1.2.4-1) unstable; urgency=low
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Jonathan Wiltshire ]
+  * New upstream release
+  * Install README.rst, not README.txt
+  * Standards-version 3.9.4 (no changes)
+  * Debhelper compat level 9
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Tue, 11 Jun 2013 22:30:57 +0100
+
+pyquery (1.2.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Standards version 3.9.3
+  * debian/source/options: Ignore egg-info changes. (Closes: #671169)
+
+ -- TANIGUCHI Takaki <takaki@debian.org>  Wed, 09 May 2012 20:24:10 +0900
+
+pyquery (1.1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Sat, 21 Jan 2012 20:25:54 +0000
+
+pyquery (1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Use dh_installdocs to install documentation, not dh_install
+  * Build with dh_python2
+  * Add CHANGES.txt to documentation
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Wed, 10 Aug 2011 14:51:52 +0100
+
+pyquery (0.6.1-2) unstable; urgency=low
+
+  * Rebuild for Python 2.7 as supported version
+  * Update my email address, remove DMUA field
+  * Standards version 3.9.2
+  * debian/control: Use X-Python-Version only
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Sat, 16 Apr 2011 17:18:37 +0100
+
+pyquery (0.6.1-1) unstable; urgency=low
+
+  * New upstream release:
+     - include upstream changelog (closes: #573274)
+  * debian/python-pyquery.install: Install README.txt to
+    /usr/share/doc/python-pyquery
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Tue, 20 Jul 2010 13:34:46 +0100
+
+pyquery (0.6-1) unstable; urgency=low
+
+  * New upstream release.
+  * Set X{S,B}-Python-Version in debian/control; remove debian/pyversions
+  * Add Provides for python-pyquery
+  * Standards version 3.9.0, no changes
+  * debian/source/format: Declare format 3.0 (quilt)
+  * debian/copyright: Update license information
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 18 Jul 2010 17:12:12 +0100
+
+pyquery (0.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Standards version 3.8.4, no changes
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 10 Mar 2010 09:28:40 +0000
+
+pyquery (0.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Thu, 28 Jan 2010 11:48:35 +0000
+
+pyquery (0.3.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #552001)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Thu, 22 Oct 2009 19:08:07 +0100

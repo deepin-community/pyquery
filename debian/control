@@ -1,0 +1,25 @@
+Source: pyquery
+Section: python
+Priority: optional
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Jonathan Wiltshire <jmw@debian.org>,
+	TANIGUCHI Takaki <takaki@debian.org>
+Build-Depends: debhelper-compat (= 9)
+        , dh-python
+	, python3-all
+	, python3-setuptools
+Standards-Version: 4.1.4
+Vcs-Git: https://salsa.debian.org/python-team/modules/pyquery.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/pyquery
+Homepage: http://pyquery.org/
+
+Package: python3-pyquery
+Architecture: all
+Depends: python3-lxml, python3-webob, ${python3:Depends}, ${misc:Depends}
+Provides: ${python3:Provides}
+Description: jQuery-like library for python 3
+ pyquery allows you to make jQuery queries on XML documents. The API is as
+ similar to jQuery as possible. pyquery uses lxml for fast XML and HTML
+ manipulation.
+ .
+ This package contains the module for Python 3.
