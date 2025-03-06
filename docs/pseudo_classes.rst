@@ -52,7 +52,7 @@ Matches all elements that contain the given text
 
         >>> from pyquery import PyQuery
         >>> d = PyQuery('<div><h1/><h1 class="title">title</h1></div>')
-        >>> d(':contains("title")')
+        >>> d('h1:contains("title")')
         [<h1.title>]
 
     
@@ -82,7 +82,7 @@ Match all elements that do not contain other elements::
         >>> from pyquery import PyQuery
         >>> d = PyQuery('<div><h1><span>title</span></h1><h2/></div>')
         >>> d(':empty')
-        [<span>, <h2>]
+        [<h2>]
 
     
 
@@ -157,6 +157,25 @@ Matches all elements with an index over the given one::
         >>> d = PyQuery('<div><h1 class="first"/><h1 class="last"/></div>')
         >>> d('h1:gt(0)')
         [<h1.last>]
+
+    
+
+:has()
+==================
+
+Matches elements which contain at least one element that matches
+    the specified selector. https://api.jquery.com/has-selector/
+
+        >>> from pyquery import PyQuery
+        >>> d = PyQuery('<div class="foo"><div class="bar"></div></div>')
+        >>> d('.foo:has(".baz")')
+        []
+        >>> d('.foo:has(".foo")')
+        []
+        >>> d('.foo:has(".bar")')
+        [<div.foo>]
+        >>> d('.foo:has(div)')
+        [<div.foo>]
 
     
 
@@ -268,6 +287,14 @@ Matches all password input elements::
         [<input>]
 
     
+
+:pseudo
+==================
+
+Translate a pseudo-element.
+
+    Defaults to not supporting pseudo-elements at all,
+    but can be overridden by sub-classes
 
 :radio
 ==================
