@@ -1,16 +1,16 @@
 Source: pyquery
 Section: python
 Priority: optional
-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
 Uploaders: Jonathan Wiltshire <jmw@debian.org>,
 	TANIGUCHI Takaki <takaki@debian.org>
-Build-Depends: debhelper-compat (= 9)
+Build-Depends: debhelper-compat (= 12)
         , dh-python
 	, python3-all
 	, python3-setuptools
 Standards-Version: 4.1.4
-Vcs-Git: https://salsa.debian.org/python-team/modules/pyquery.git
-Vcs-Browser: https://salsa.debian.org/python-team/modules/pyquery
+Vcs-Git: https://salsa.debian.org/python-team/packages/pyquery.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/pyquery
 Homepage: http://pyquery.org/
 
 Package: python3-pyquery

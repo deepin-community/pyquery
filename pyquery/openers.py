@@ -1,15 +1,7 @@
 # -*- coding: utf-8 -*-
-import sys
-
-PY3k = sys.version_info >= (3,)
-
-if PY3k:
-    from urllib.request import urlopen
-    from urllib.parse import urlencode
-    basestring = (str, bytes)
-else:
-    from urllib2 import urlopen  # NOQA
-    from urllib import urlencode  # NOQA
+from urllib.request import urlopen
+from urllib.parse import urlencode
+from urllib.error import HTTPError
 
 try:
     import requests
@@ -17,9 +9,14 @@ try:
 except ImportError:
     HAS_REQUEST = False
 
+DEFAULT_TIMEOUT = 60
+
+basestring = (str, bytes)
 
 allowed_args = (
-    'auth', 'data', 'headers', 'verify', 'cert', 'config', 'hooks', 'proxies')
+    'auth', 'data', 'headers', 'verify',
+    'cert', 'config', 'hooks', 'proxies', 'cookies'
+)
 
 
 def _query(url, method, kwargs):
@@ -38,22 +35,30 @@ def _query(url, method, kwargs):
         url += data
         data = None
 
-    if data and PY3k:
+    if data:
         data = data.encode('utf-8')
     return url, data
 
 
 def _requests(url, kwargs):
+
     encoding = kwargs.get('encoding')
     method = kwargs.get('method', 'get').lower()
-    meth = getattr(requests, str(method))
+    session = kwargs.get('session')
+    if session:
+        meth = getattr(session, str(method))
+    else:
+        meth = getattr(requests, str(method))
     if method == 'get':
         url, data = _query(url, method, kwargs)
     kw = {}
     for k in allowed_args:
         if k in kwargs:
             kw[k] = kwargs[k]
-    resp = meth(url=url, **kw)
+    resp = meth(url=url, timeout=kwargs.get('timeout', DEFAULT_TIMEOUT), **kw)
+    if not (200 <= resp.status_code < 300):
+        raise HTTPError(resp.url, resp.status_code,
+                        resp.reason, resp.headers, None)
     if encoding:
         resp.encoding = encoding
     html = resp.text
@@ -63,7 +68,7 @@ def _requests(url, kwargs):
 def _urllib(url, kwargs):
     method = kwargs.get('method')
     url, data = _query(url, method, kwargs)
-    return urlopen(url, data)
+    return urlopen(url, data, timeout=kwargs.get('timeout', DEFAULT_TIMEOUT))
 
 
 def url_opener(url, kwargs):
